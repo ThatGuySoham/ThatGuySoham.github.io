@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soham • Projects Portfolio</title>
+  <meta name="description" content="Soham's portfolio – auto-populated from the Projects GitHub repo." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link rel="preconnect" href="https://api.github.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional: extend as you like)
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            glow: '0 0 0 2px rgba(14,165,233,0.15), 0 10px 25px -5px rgba(2, 132, 199, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth scroll and subtle animations */
+    html { scroll-behavior: smooth; }
+    .fade-in { animation: fadeIn 0.5s ease-in-out both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity:1; transform:none; } }
+    .prose { max-width: 70ch; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Soham",
+    "url": "https://thatguysoham.github.io/",
+    "sameAs": [
+      "https://github.com/ThatGuySoham"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-cyan-400 selection:text-slate-900">
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 bg-slate-900/70 border-b border-slate-800">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center gap-4">
+      <a href="#top" class="font-bold tracking-tight text-lg">Soham<span class="text-cyan-400">.dev</span></a>
+      <nav class="ml-auto flex items-center gap-3 text-sm">
+        <a href="#projects" class="hover:text-cyan-300">Projects</a>
+        <a href="#about" class="hover:text-cyan-300">About</a>
+        <a href="#contact" class="hover:text-cyan-300">Contact</a>
+        <button id="themeToggle" class="ml-4 rounded-2xl border border-slate-700 px-3 py-1 hover:border-cyan-500/50 hover:shadow-glow transition">Toggle Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-6">
+    <div class="grid md:grid-cols-[1.2fr,1fr] gap-8 items-center">
+      <div class="fade-in">
+        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Hey, I'm <span class="text-cyan-400">Soham</span> 👋</h1>
+        <p class="mt-3 text-slate-300 text-base sm:text-lg">I build things for the web and beyond. This portfolio auto-pulls projects straight from my <a class="underline decoration-cyan-400/50 hover:text-cyan-300" href="https://github.com/ThatGuySoham/Projects" target="_blank" rel="noreferrer">Projects</a> repo.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-5 py-2 shadow-glow">View Projects</a>
+          <a id="resumeLink" href="#" target="_blank" class="rounded-2xl border border-slate-700 hover:border-cyan-400 px-5 py-2">Résumé</a>
+          <a href="mailto:soham@example.com" class="rounded-2xl border border-slate-700 hover:border-cyan-400 px-5 py-2">Hire Me</a>
+        </div>
+      </div>
+      <div class="fade-in md:justify-self-end">
+        <div class="rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-6 shadow-glow">
+          <h2 class="font-semibold">Quick Stats</h2>
+          <dl class="mt-3 grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <dt class="text-slate-400">Total Projects</dt>
+              <dd id="statProjects" class="text-xl font-bold">–</dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">Last Updated</dt>
+              <dd id="statUpdated" class="text-xl font-bold">–</dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">GitHub</dt>
+              <dd><a class="underline decoration-cyan-400/50 hover:text-cyan-300" href="https://github.com/ThatGuySoham" target="_blank" rel="noreferrer">@ThatGuySoham</a></dd>
+            </div>
+            <div>
+              <dt class="text-slate-400">Email</dt>
+              <dd><a class="underline decoration-cyan-400/50 hover:text-cyan-300" href="mailto:soham@example.com">sohamjagtap.engg2.4@gmail.com</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-14">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold">Projects</h2>
+        <p class="text-slate-400 text-sm">Auto-loaded from <code>ThatGuySoham/Projects</code> (one folder = one project, optional README.md description).</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <input id="search" placeholder="Search..." class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-cyan-500/40" />
+        <select id="sort" class="rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-cyan-500/40">
+          <option value="updated">Recently updated</option>
+          <option value="name">A → Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="projectsGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+    <template id="projectCardTpl">
+      <article class="group rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 hover:border-cyan-500/40 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-lg truncate"></h3>
+          <span class="rounded-full border border-slate-700 px-2 py-0.5 text-[10px] uppercase tracking-wide text-slate-400">NEW</span>
+        </div>
+        <p class="mt-2 text-sm text-slate-300 line-clamp-3"></p>
+        <div class="mt-4 flex flex-wrap gap-2 text-[11px] text-slate-300" data-tags></div>
+        <div class="mt-5 flex items-center gap-3">
+          <a target="_blank" class="rounded-xl bg-cyan-500 text-slate-900 font-semibold text-sm px-3 py-1.5" data-view>View</a>
+          <a target="_blank" class="rounded-xl border border-slate-700 text-sm px-3 py-1.5" data-code>Code</a>
+        </div>
+      </article>
+    </template>
+
+    <div id="emptyState" class="hidden mt-8 rounded-3xl border border-dashed border-slate-700 p-6">
+      <h3 class="font-semibold">No projects found yet</h3>
+      <p class="mt-1 text-slate-300 text-sm">Add a folder to your <code>Projects</code> repo. Optionally include a <code>README.md</code> with a short summary, links and screenshots. This page will refresh automatically on next load.</p>
+      <pre class="mt-4 bg-slate-900/70 rounded-xl p-4 text-xs overflow-x-auto">Projects/
+├─ my-first-app/
+│  ├─ README.md   # 1–3 line summary + screenshot link
+│  └─ ...
+└─ another-tool/
+   └─ README.md</pre>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="mx-auto max-w-4xl px-4 sm:px-6 pb-14">
+    <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
+    <div class="mt-4 prose prose-invert">
+      <p id="aboutText">Hi! I'm Soham, a developer-in-learning interested in web apps, systems, simulations, and playful UX. I enjoy turning vague ideas into working prototypes fast.</p>
+      <ul id="skillsList">
+        <li><strong>Languages:</strong> C, C++, Python, Java</li>
+        <li><strong>Frameworks:</strong> FastAPI, Node</li>
+        <li><strong>Currently learning:</strong> Backend, MERN stack integration</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="border-t border-slate-800 bg-slate-950/60">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-10 grid gap-6 md:grid-cols-2">
+      <div>
+        <h3 class="font-semibold text-lg">Get in touch</h3>
+        <p class="text-slate-300 text-sm mt-1">Open to internships and open source collabs.</p>
+        <div class="mt-3 flex flex-wrap gap-3 text-sm">
+          <a class="rounded-xl border border-slate-700 px-3 py-1.5 hover:border-cyan-400" href="mailto:soham@example.com">sohamjagtap.engg2.4@gmail.com</a>
+          <a class="rounded-xl border border-slate-700 px-3 py-1.5 hover:border-cyan-400" href="https://github.com/ThatGuySoham" target="_blank" rel="noreferrer">GitHub</a>
+          <a id="linkedinLink" class="rounded-xl border border-slate-700 px-3 py-1.5 hover:border-cyan-400" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="md:justify-self-end text-sm text-slate-400">
+        <p>Built with Tailwind. Auto-sources projects from GitHub.</p>
+        <p class="mt-1">© <span id="year"></span> Soham. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Logic -->
+  <script>
+    const CONFIG = {
+      githubUser: 'ThatGuySoham',
+      repo: 'Projects',
+      resumeUrl: '#', // e.g., 'https://your-cdn/resume.pdf'
+      linkedinUrl: '#',
+      aboutHtml: null, // set to a custom HTML string to override About section
+      // Optional: pin project folder names to show first
+      pinned: [/* 'cool-app', 'ml-notebook' */],
+      // Cache TTL in minutes for GitHub API responses
+      cacheMinutes: 15,
+    };
+
+    const els = {
+      grid: document.getElementById('projectsGrid'),
+      tpl: document.getElementById('projectCardTpl'),
+      empty: document.getElementById('emptyState'),
+      statProjects: document.getElementById('statProjects'),
+      statUpdated: document.getElementById('statUpdated'),
+      search: document.getElementById('search'),
+      sort: document.getElementById('sort'),
+      year: document.getElementById('year'),
+      resumeLink: document.getElementById('resumeLink'),
+      linkedinLink: document.getElementById('linkedinLink'),
+    };
+
+    els.year.textContent = new Date().getFullYear();
+    if (CONFIG.resumeUrl && CONFIG.resumeUrl !== '#') els.resumeLink.href = CONFIG.resumeUrl; else els.resumeLink.classList.add('opacity-60', 'pointer-events-none');
+    if (CONFIG.linkedinUrl && CONFIG.linkedinUrl !== '#') els.linkedinLink.href = CONFIG.linkedinUrl; else els.linkedinLink.classList.add('opacity-60', 'pointer-events-none');
+
+    // Dark/Light theme toggle using localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const applyTheme = t => document.documentElement.classList.toggle('light', t === 'light');
+    const savedTheme = localStorage.getItem('theme');
+    applyTheme(savedTheme || 'dark');
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+
+    // Light theme styles
+  </script>
+  <style>
+    .light body { background-color: #f8fafc; color: #0f172a; }
+    .light .prose :where(p,li,dd) { color: #334155; }
+    .light header { background-color: rgba(255,255,255,0.6); border-color: #e2e8f0; }
+    .light footer { background: #f8fafc; border-color: #e2e8f0; }
+    .light .shadow-glow { box-shadow: 0 0 0 2px rgba(14,165,233,0.2), 0 10px 25px -5px rgba(14, 165, 233, 0.2); }
+  </style>
+
+  <script>
+    // Minimal helper to cache GET requests
+    async function cachedJson(key, url, ttlMinutes) {
+      const now = Date.now();
+      const cached = localStorage.getItem(key);
+      if (cached) {
+        try {
+          const { time, data } = JSON.parse(cached);
+          if (now - time < ttlMinutes * 60 * 1000) return data;
+        } catch {}
+      }
+      const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
+      if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+      const data = await res.json();
+      localStorage.setItem(key, JSON.stringify({ time: now, data }));
+      return data;
+    }
+
+    function extToTag(fname) {
+      const ext = fname.split('.').pop().toLowerCase();
+      if (['js','ts','jsx','tsx'].includes(ext)) return 'JavaScript';
+      if (['py'].includes(ext)) return 'Python';
+      if (['java'].includes(ext)) return 'Java';
+      if (['cpp','cc','cxx','hpp','h'].includes(ext)) return 'C++';
+      if (['cs'].includes(ext)) return 'C#';
+      if (['html','css'].includes(ext)) return 'Web';
+      if (['ipynb','md'].includes(ext)) return 'Docs';
+      return null;
+    }
+
+    function extractFirstLink(markdown) {
+      const m = markdown.match(/https?:\/\/[^\s)]+/);
+      return m ? m[0] : null;
+    }
+
+    function stripMarkdown(md) {
+      return md
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[[^\]]*\]\([^)]*\)/g, '$1')
+        .replace(/[#>*_~`>-]/g, '')
+        .replace(/\n+/g, ' ')
+        .trim();
+    }
+
+    async function fetchProjects() {
+      const { githubUser, repo, cacheMinutes } = CONFIG;
+      const repoInfo = await cachedJson(`repo:${githubUser}/${repo}`,
+        `https://api.github.com/repos/${githubUser}/${repo}`,
+        cacheMinutes);
+      const defaultBranch = repoInfo.default_branch || 'main';
+
+      const contents = await cachedJson(`contents:${githubUser}/${repo}`,
+        `https://api.github.com/repos/${githubUser}/${repo}/contents`,
+        cacheMinutes);
+
+      const dirs = contents.filter(item => item.type === 'dir');
+
+      // For each directory, try to pull README and list of files to guess tags
+      const projects = await Promise.all(dirs.map(async dir => {
+        const path = dir.path;
+        let readmeText = '';
+        try {
+          const readmeRes = await fetch(`https://raw.githubusercontent.com/${githubUser}/${repo}/${defaultBranch}/${encodeURIComponent(path)}/README.md`);
+          if (readmeRes.ok) readmeText = await readmeRes.text();
+        } catch {}
+
+        // Fetch directory file list
+        let files = [];
+        try {
+          const tree = await cachedJson(`dir:${githubUser}/${repo}/${path}`,
+            `https://api.github.com/repos/${githubUser}/${repo}/contents/${encodeURIComponent(path)}`,
+            cacheMinutes);
+          files = Array.isArray(tree) ? tree.map(f => f.name) : [];
+        } catch {}
+
+        const tags = Array.from(new Set(files.map(extToTag).filter(Boolean)));
+        const homepage = extractFirstLink(readmeText);
+        const summary = (readmeText ? stripMarkdown(readmeText).slice(0, 220) : '').trim();
+        return {
+          name: path.split('/').pop(),
+          path,
+          summary,
+          homepage,
+          tags,
+          updatedAt: dir.git_url || repoInfo.pushed_at // fallback
+        };
+      }));
+
+      // Sort: pinned first (keep order), then updated/name
+      const pinnedSet = new Set(CONFIG.pinned);
+      const pinned = projects.filter(p => pinnedSet.has(p.name));
+      const rest = projects.filter(p => !pinnedSet.has(p.name));
+
+      function sortBy(recent = true) {
+        if (recent) {
+          rest.sort((a,b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+        } else {
+          rest.sort((a,b) => a.name.localeCompare(b.name));
+        }
+      }
+
+      return { pinned, rest, defaultBranch, repoInfo };
+    }
+
+    function renderProjects(list) {
+      els.grid.innerHTML = '';
+      if (!list.length) {
+        els.empty.classList.remove('hidden');
+        els.statProjects.textContent = '0';
+        return;
+      }
+      els.empty.classList.add('hidden');
+      const frag = document.createDocumentFragment();
+      list.forEach(p => {
+        const node = els.tpl.content.cloneNode(true);
+        node.querySelector('h3').textContent = p.name;
+        const badge = node.querySelector('span');
+        if (p.summary) badge.classList.add('hidden'); // hide NEW if there is a README
+        node.querySelector('p').textContent = p.summary || 'No README yet. Click Code to explore files.';
+        const tagsWrap = node.querySelector('[data-tags]');
+        (p.tags.length ? p.tags : ['Project']).forEach(t => {
+          const s = document.createElement('span');
+          s.className = 'rounded-full border border-slate-700 px-2 py-0.5';
+          s.textContent = t;
+          tagsWrap.appendChild(s);
+        });
+        const base = `https://github.com/${CONFIG.githubUser}/${CONFIG.repo}/tree/${encodeURIComponent(window.defaultBranch || 'main')}/${p.path}`;
+        node.querySelector('[data-code]').href = base;
+        node.querySelector('[data-view]').href = p.homepage || base;
+        frag.appendChild(node);
+      });
+      els.grid.appendChild(frag);
+      els.statProjects.textContent = String(list.length);
+    }
+
+    (async function init() {
+      try {
+        const { pinned, rest, defaultBranch, repoInfo } = await fetchProjects();
+        window.defaultBranch = defaultBranch;
+        const all = [...pinned, ...rest];
+        renderProjects(all);
+        els.statUpdated.textContent = new Date(repoInfo.pushed_at || Date.now()).toLocaleDateString();
+
+        // Search + Sort
+        function applyFilters() {
+          const q = (els.search.value || '').toLowerCase();
+          const mode = els.sort.value;
+          const filtered = all.filter(p => p.name.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q));
+          if (mode === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+          else filtered.sort((a,b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+          renderProjects(filtered);
+        }
+        els.search.addEventListener('input', applyFilters);
+        els.sort.addEventListener('change', applyFilters);
+
+        // Custom About override
+        if (CONFIG.aboutHtml) {
+          const about = document.getElementById('aboutText');
+          about.innerHTML = CONFIG.aboutHtml;
+        }
+
+      } catch (err) {
+        console.error(err);
+        els.grid.innerHTML = '';
+        els.empty.classList.remove('hidden');
+      }
+    })();
+  </script>
+</body>
+</html>
